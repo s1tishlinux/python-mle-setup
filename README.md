@@ -84,7 +84,13 @@ source venv/bin/activate    # Windows: venv\Scripts\activate
 pip install pylint flake8 black isort
 pip freeze > requirements.txt
 ```
-
+### 4. Set Up Python Tools using Conda
+```bash
+conda create -n mle-env python=3.10 -y
+conda activate mle-env
+pip install pylint flake8 black isort
+pip freeze > requirements.txt
+```
 ---
 
 ### 5. Git Commit and Tag
