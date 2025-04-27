@@ -179,4 +179,6 @@ git commit -m "Your commit message"
 git push origin setup/python-tools
 
 ```
+### 9. Reference documentation
+https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html
 ⸻
