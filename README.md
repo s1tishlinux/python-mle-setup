@@ -349,4 +349,187 @@ You’re now completing Module 1 → Assignment 1.4 🎉
 ⸻
 
 ✅ You’re all set. Use this README.md in your GitHub repository!
+
+
+
+# Assignment 1.4: Setting Up Python Development Environment in VS Code
+
+This assignment helps learners set up a Python development environment using **Visual Studio Code**. It includes setting up user-level and workspace-level configurations for formatting, linting, and import sorting tools like **black**, **flake8**, and **isort**.
+
+## 📁 Folder Structure
+
+```
+my-python-project/
+├── .venv/                # Virtual environment
+├── .vscode/
+│   └── settings.json     # Workspace-level VS Code settings
+├── .gitignore
+├── README.md             # This file
+├── test_code.py          # Sample code file for formatting test
+└── requirements.txt
+```
+
+---
+
+## ✅ Prerequisites
+
+* Python 3.7 or later installed on your machine
+* Visual Studio Code installed
+* VS Code Python Extension installed
+
+---
+
+## 🧱 Step-by-Step Instructions
+
+### 1. Create and Activate a Virtual Environment
+
+```bash
+# Create a folder for your project
+mkdir my-python-project
+cd my-python-project
+
+# Create virtual environment (adjust for Windows)
+python -m venv .venv
+
+# Activate virtual environment
+# Windows:
+.venv\Scripts\activate
+# macOS/Linux:
+source .venv/bin/activate
+```
+
+### 2. Install Required Python Tools
+
+```bash
+pip install black isort flake8
+
+# Optionally freeze dependencies
+pip freeze > requirements.txt
+```
+
+---
+
+### 3. Configure Workspace-Level Settings in VS Code
+
+Create a `.vscode/settings.json` file:
+
+```json
+{
+  "python.pythonPath": ".venv/bin/python",  // or ".venv\\Scripts\\python.exe" on Windows
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.sortImports.args": ["--profile", "black"],
+  "editor.tabSize": 4,
+  "files.trimTrailingWhitespace": true
+}
+```
+
+### 4. (Optional) User-Level Settings
+
+VS Code > `Ctrl + Shift + P` > Preferences: Open User Settings (JSON)
+
+```json
+{
+  "editor.tabSize": 4,
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true
+}
+```
+
+These are global settings for all VS Code projects.
+
+---
+
+## ⚙️ Custom Tool Configurations
+
+### `.flake8`
+
+```ini
+[flake8]
+max-line-length = 88
+```
+
+### `pyproject.toml` for `black` and `isort`
+
+```toml
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+```
+
+---
+
+## 🧪 Testing the Setup
+
+### 1. Sample `test_code.py` before formatting
+
+```python
+import os,sys
+
+def sample_function():    print(   "Hello World")
+```
+
+### 2. On Save: After `black`, `isort`, and `flake8`
+
+```python
+import os
+import sys
+
+def sample_function():
+    print("Hello World")
+```
+
+You should see formatted code, sorted imports, and linting messages (if any).
+
+---
+
+## 🔍 How to Verify Everything is Working
+
+1. Open the folder in VS Code.
+2. Make changes to Python file and save.
+3. Check if:
+
+   * Imports are sorted
+   * Formatting is applied
+   * No trailing whitespaces
+   * Linting errors (e.g. from `flake8`) are shown in the Problems tab
+
+---
+
+## 📌 Notes on User vs Workspace Settings
+
+| Feature         | User-Level Setting                  | Workspace Setting               |
+| --------------- | ----------------------------------- | ------------------------------- |
+| Scope           | Applies to all projects             | Applies only to current project |
+| Location        | Global User Settings (JSON)         | `.vscode/settings.json`         |
+| Recommended For | Common defaults across all projects | Project-specific configurations |
+
+Use **workspace settings** when:
+
+* Your team/project has specific coding standards
+* You want consistent behavior across machines
+
+Use **user settings** for personal preferences like font size, default format on save, etc.
+
+---
+
+## 🎯 Summary
+
+* Created a virtual environment
+* Installed `black`, `flake8`, and `isort`
+* Configured workspace settings
+* Differentiated between user and workspace settings
+* Verified formatting and linting works as expected
+
+✅ You're now ready to start writing clean, consistent Python code in VS Code!
+
+---
+
 ⸻
