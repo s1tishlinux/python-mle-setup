@@ -1,4 +1,4 @@
-# Python MLE Setup: Tools and Git Workflow
+# Assignment 1.3: Setting Up Python Development Environment in VS Code - Tools and Git Workflow
 
 This repository demonstrates the setup of essential Python tools (`pylint`, `flake8`, `black`, and `isort`) for Machine Learning Engineering (MLE) development along with best practices for Git workflows. The goal is to prepare for MLE (Machine Learning Engineer) tasks by using modern development standards.
 
@@ -183,174 +183,7 @@ git push origin setup/python-tools
 https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html
 
 
-Assignment : 1.4:
-
-
-🧠 Assignment 1.4: Setting Up Python Development Environment in VS Code
-
-This README guides beginners and students through setting up a professional Python development environment using Visual Studio Code (VS Code) with proper workspace and user-level configurations.
-
-⸻
-
-📁 Folder Structure and Environment Setup
-	1.	Create project folder:
-
-mkdir python-vscode-setup
-cd python-vscode-setup
-
-
-	2.	Create virtual environment:
-
-python -m venv venv
-
-
-	3.	Activate virtual environment:
-	•	On Windows:
-
-venv\Scripts\activate
-
-
-	•	On macOS/Linux:
-
-source venv/bin/activate
-
-
-	4.	Install dev tools inside virtual environment:
-
-pip install black flake8 isort
-
-
-
-⸻
-
-🔧 VS Code Workspace Configuration
-
-Create or open a .vscode/settings.json file in your project folder and add:
-
-{
-  "python.pythonPath": "venv/bin/python", // Or "venv\\Scripts\\python.exe" on Windows
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true
-  },
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": [
-    "--line-length=88"
-  ],
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": [
-    "--max-line-length=88"
-  ],
-  "python.sortImports.args": [
-    "--profile", "black"
-  ],
-  "files.trimTrailingWhitespace": true,
-  "editor.tabSize": 4
-}
-
-
-
-⸻
-
-✍️ Summary of Configuration Goals
-	•	Set Python interpreter from virtual environment
-	•	Auto-format code with black when saving
-	•	Sort imports using isort
-	•	Lint code with flake8
-	•	Ensure all tools use consistent line length (88 chars)
-	•	Trim trailing spaces and set tab size to 4 spaces
-
-⸻
-
-🌍 User Settings vs Workspace Settings
-
-Feature	User Settings (Ctrl + , → User)	Workspace Settings (.vscode/settings.json)
-Affects all projects	✅	❌
-Affects only this project	❌	✅
-Good for global defaults	✅	❌
-Good for per-project config	❌	✅
-
-💡 Tip: Prefer workspace settings for tool-specific settings like flake8, black, and pythonPath.
-
-⸻
-
-📂 Optional Configuration Files (Advanced)
-
-For portability outside VS Code (e.g., CI/CD, team sharing):
-
-.flake8 file
-
-[flake8]
-max-line-length = 88
-
-pyproject.toml
-
-[tool.black]
-line-length = 88
-
-[tool.isort]
-profile = "black"
-
-
-
-⸻
-
-📄 Sample Python File for Testing
-
-ugly_script.py
-
-import os,sys
-
-def foo(): print("badly formatted")
-
-After saving (with tools enabled):
-
-import os
-import sys
-
-def foo():
-    print("badly formatted")
-
-
-
-⸻
-
-🔪 How to Verify Tools Work
-	1.	Make a badly formatted .py file
-	2.	Save the file in VS Code
-	3.	Check that:
-	•	black formats the code
-	•	isort organizes imports
-	•	flake8 highlights lint issues
-
-⸻
-
-📌 Assignment Objective
-
-Make students:
-	•	Create a new workspace with virtual environment
-	•	Configure user-level and workspace-level settings
-	•	Install and test formatting/linting tools
-	•	Understand line-length consistency across tools
-
-⸻
-
-🔄 Next Steps
-
-We will build 125 assignments across multiple modules:
-	•	Module 1: Environment setup, VS Code config, tool installation
-	•	Module 2: Python coding standards, formatting, refactoring
-	•	Module 3: ML environment setup, training pipelines, testing
-	•	Module 4: Advanced GenAI workflows and deployment
-
-You’re now completing Module 1 → Assignment 1.4 🎉
-
-⸻
-
-✅ You’re all set. Use this README.md in your GitHub repository!
-
-
+A⸻
 
 # Assignment 1.4: Setting Up Python Development Environment in VS Code
 
@@ -446,6 +279,9 @@ These are global settings for all VS Code projects.
 ---
 
 ## ⚙️ Custom Tool Configurations
+📂 Optional Configuration Files (Advanced)
+
+For portability outside VS Code (e.g., CI/CD, team sharing):
 
 ### `.flake8`
 
@@ -511,12 +347,22 @@ You should see formatted code, sorted imports, and linting messages (if any).
 | Location        | Global User Settings (JSON)         | `.vscode/settings.json`         |
 | Recommended For | Common defaults across all projects | Project-specific configurations |
 
+🌍 User Settings vs Workspace Settings
+
+Feature	User Settings 		(Ctrl + , → User)		Workspace Settings (.vscode/settings.json)
+Affects all projects			✅			❌
+Affects only this project		❌			✅
+Good for global defaults		✅			❌
+Good for per-project config		❌			✅
+
 Use **workspace settings** when:
 
 * Your team/project has specific coding standards
 * You want consistent behavior across machines
 
 Use **user settings** for personal preferences like font size, default format on save, etc.
+
+💡 Tip: Prefer workspace settings for tool-specific settings like flake8, black, and pythonPath.
 
 ---
 
@@ -529,7 +375,5 @@ Use **user settings** for personal preferences like font size, default format on
 * Verified formatting and linting works as expected
 
 ✅ You're now ready to start writing clean, consistent Python code in VS Code!
-
 ---
-
 ⸻
