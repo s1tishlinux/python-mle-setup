@@ -367,3 +367,120 @@ Use **user settings** for personal preferences like font size, default format on
 ✅ You're now ready to start writing clean, consistent Python code in VS Code!
 ---
 ⸻
+
+# 🧠 Python Project Design & Testing Guide for Data Science
+
+---
+
+## 📁 1. Project Folder Structure
+
+**Why it's important**  
+- Ensures reproducibility  
+- Makes code easy to debug and maintain  
+- Promotes modular and reusable code  
+
+**Suggested Directory Layout:**
+```
+project_name/
+├── config/         # YAML configuration files (dev, prod)
+├── input/          # Raw input data files
+├── log/            # Logs (e.g., activity_log.txt)
+├── notebooks/      # Jupyter Notebooks (EDA, POC, etc.)
+├── outputs/        # Metrics, evaluation results, model predictions
+├── pickle/         # Saved models (e.g., .pkl)
+├── scripts/        # Helper scripts and utilities
+├── tests/          # Unit and functional tests
+└── src/            # Core source code
+    ├── preparation/
+    ├── processing/
+    └── modeling/
+```
+
+---
+
+## 🧱 2. Adopting Good Coding Design
+
+### Design Principles:
+- ✅ Use **reusable components** (1 function = 1 purpose)
+- ✅ Store configs in `.yaml` or `.json`
+- ✅ Use `sklearn.pipeline` to manage steps
+- ✅ Save models with `joblib` or `pickle`
+- ✅ Move helper logic to `utils.py` or `helpers.py`
+
+### Best Practices Checklist:
+| Practice         | Description                                      |
+|------------------|--------------------------------------------------|
+| Identifiers      | Use meaningful names (`train_model`, `load_data`)|
+| Modularization   | Split code into functions, modules, packages     |
+| Formatting       | Use `black`, `flake8`, `isort`                   |
+| Docstrings       | All functions/classes must have a docstring      |
+| Code Analysis    | Run `pylint`, `mypy` regularly                   |
+| Testing          | Write unit & functional tests early              |
+
+-----------------------------------------------------------------------
+
+## 🧪 3. Testing in Python
+
+### Why Test?
+- Avoid bugs early
+- Ensure reliable, reusable code
+- Enable safe refactoring
+
+### Unit Testing (Test 1 function at a time)
+```python
+from my_math import add
+
+def test_add():
+    assert add(2, 3) == 5
+```
+
+Test Cases Should Include:
+- ✅ Synthetic data  
+- ✅ Missing or bad inputs  
+- ✅ Floating-point edge cases (`assertAlmostEqual`)  
+- ✅ Time-series boundaries (start/end window)  
+- ✅ Date/calendar tests (business days, holidays)  
+
+---
+
+### Functional Testing (Test the full pipeline)
+```python
+def test_pipeline_output():
+    model = train_model(X_train, y_train)
+    predictions = model.predict(X_test)
+    assert accuracy_score(y_test, predictions) > 0.8
+```
+
+Things to Check:
+- Full ML pipeline: input ➜ model ➜ prediction
+- Separation between **train/test**
+- Correct **feature encoding**
+- **Holdout sets** not leaked
+- Performance metrics: accuracy, speed, etc.
+
+---
+
+## 💼 4. Interview Talking Points
+
+When asked about testing:
+
+> ✅ I know the difference between unit and functional tests  
+> ✅ I test using both real and synthetic inputs  
+> ✅ I use tools like `pytest`, `joblib`, and `sklearn.pipeline`  
+> ✅ I validate numeric precision, encoding logic, and train-test separation  
+> ✅ I understand testing helps make the project modular and production-ready  
+
+---
+
+## 🧾 5. Final Summary Table
+
+| Area             | Key Practices                                |
+|------------------|-----------------------------------------------|
+| Folder Structure | Use organized, modular layout                 |
+| Coding Design    | Reusable components, external config, pipelines |
+| Unit Testing     | Small tests for function correctness          |
+| Functional Test  | Full-system pipeline validation               |
+| Code Standards   | Formatting, linting, and clear docstrings     |
+| Deployment Ready | Use configs, persist models, write tests      |
+
+---
